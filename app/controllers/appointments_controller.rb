@@ -2,13 +2,13 @@ class AppointmentsController < ApplicationController
 	before_action :set_patient
 
 	def index
+		byebug
 		@appointments = @patient.appointments
 		render json: @appointments
 	end
 
 
 	def create
-		byebug
 		appointment = @patient.appointments.build(appointment_params)
 		if appointment.save
 			render json: appointment, status: :created
@@ -21,7 +21,6 @@ class AppointmentsController < ApplicationController
 	private
 
 	def set_patient
-		byebug
 		@patient = Patient.find(params[:patient_id])
 	end
 
@@ -29,9 +28,9 @@ class AppointmentsController < ApplicationController
 		params.require(:appointment).permit(:appointment_time, :doctor_id, :reason, :room_number, :fee, :duration)
 	end
 
-	def current_user
-		User.find_by(params[:user_id])
-	end
+	# def current_user
+	# 	User.find_by(params[:user_id])
+	# end
 
 end
 

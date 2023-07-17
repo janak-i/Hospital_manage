@@ -1,9 +1,9 @@
 class SessionsController < ApplicationController
         def signup
-                byebug
+                
                 user = User.new(email: params[:email], password: params[:password], role:params[:role], name: params[:name])
                 if user.save
-                        encode_user_data({ user_data: user.id })
+                        token =   encode_user_data({ user_data: user.id })
                         UserMailer.welcome_email(user).deliver_now
                         render json: { token: token }
                 else

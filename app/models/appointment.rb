@@ -10,7 +10,6 @@ class Appointment < ApplicationRecord
 
 
 	def valid_appointment_time
-		byebug
 		return unless appointment_time
 		if appointment_time.hour < 7 || appointment_time.hour >= 11
 			errors.add(:appointment_time, "should be between 11 PM and 6 AM")
@@ -19,14 +18,12 @@ class Appointment < ApplicationRecord
 
 
 	def no_duplicate_appointments
-		byebug
 		if Appointment.exists?(appointment_time: appointment_time)
 			errors.add(:appointment_time, "has already been taken")
 		end
 	end
 
 	def valid_duration
-		byebug
 		return unless appointment_time && duration
 		if duration < 30 || duration > 120
 			errors.add(:duration_in_minutes, "should be between 30 and 120 minutes")

@@ -50,12 +50,17 @@ gem "bootsnap", require: false
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
-  gem "debug", platforms: %i[ mri mingw x64_mingw ]
+  # gem "debug", platforms: %i[ mri mingw x64_mingw ]
+  # gem 'rspec-rails', '~> 5.0.0'
+
 end
 
 group :development do
+   gem 'rspec-rails'
   # Use console on exceptions pages [https://github.com/rails/web-console]
-  gem "web-console"
+  # gem "web-console"
+  # gem "rspec-rails"
+  # gem 'webrat'
 
   # Add speed badges [https://github.com/MiniProfiler/rack-mini-profiler]
   # gem "rack-mini-profiler"
@@ -69,16 +74,17 @@ group :test do
   gem "capybara"
   gem "selenium-webdriver"
   gem "webdrivers"
-  gem 'rspec-rails'
-  gem 'shoulda-matchers', '~> 5.0'
+  gem 'shoulda-matchers'
   gem 'factory_bot_rails'
+  gem 'faker'
+  #  gem 'factory_girl_rails'
+  # gem 'cucumber-rails'
+  # gem 'turn', :require => false
 end
 
 gem 'jwt'
 gem 'cancancan'
 gem 'rubocop', require: false
 gem 'byebug'
-
-
 gem 'twilio-ruby'
 
